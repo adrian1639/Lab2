@@ -120,37 +120,58 @@ namespace practica_de_Lab
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Persona per = new Persona();
-            per.Nit = textBox1.Text;
-            per.Nombre = textBox2.Text;
-            per.Direccion = textBox3.Text;
+            bool existe = cliente.Exists(v => v.Nit == textBox1.Text);
+            if (existe)
+            {
+                MessageBox.Show("Ese NIT ya fue ingresado", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Persona per = new Persona();
+                per.Nit = textBox1.Text;
+                per.Nombre = textBox2.Text;
+                per.Direccion = textBox3.Text;
 
-            Cliente.Add(per);
+                Cliente.Add(per);
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = Cliente;
-            dataGridView1.Refresh();
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = Cliente;
+                dataGridView1.Refresh();
 
-            Guardar();
+                Guardar();
+            }
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Vehiculos veh = new Vehiculos();
-            veh.Placa = textBox6.Text;
-            veh.Marca = textBox5.Text;
-            veh.Modelo = textBox4.Text;
-            veh.Color = textBox9.Text;
-            veh.Precio = float.Parse(textBox8.Text);
+            bool existe = carros.Exists(v => v.Placa == textBox6.Text);
+            if(existe)
+            {
+                MessageBox.Show("Esa placa ya fue ingresada", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Vehiculos veh = new Vehiculos();
+                veh.Placa = textBox6.Text;
+                veh.Marca = textBox5.Text;
+                veh.Modelo = textBox4.Text;
+                veh.Color = textBox9.Text;
+                veh.Precio = float.Parse(textBox8.Text);
 
-            Carros.Add(veh);
-            dataGridView2.DataSource = null;
-            dataGridView2.DataSource = Carros;
-            dataGridView2.Refresh();
+                Carros.Add(veh);
+                dataGridView2.DataSource = null;
+                dataGridView2.DataSource = Carros;
+                dataGridView2.Refresh();
 
-            Guardar2();
+                Guardar2();
+            }
             
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

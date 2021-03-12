@@ -270,6 +270,7 @@ namespace practica_de_Lab
             this.button4.TabIndex = 23;
             this.button4.TabStop = false;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dataGridView1
             // 
